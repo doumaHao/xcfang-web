@@ -1,0 +1,38 @@
+
+.table-hover .table-detail .detail-info{
+    padding: 0px;
+    border: 1px solid #5d7b70;
+}
+
+.table-hover .table-detail .detail-info .profile-info-name{
+    font-weight: bold;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+.width-90 {
+    width: 90%;
+}
+
+.width-80 {
+    width: 90%;
+}
+
+.width-3 {
+    width: 3%;
+}
+
+.content-div .col-sm-3{
+    text-align: right;
+    border: 1px solid #9bab93;
+}
+
+.bg-efdede{
+    background: #efdede;
+}
+
+.profile-user-info-hide{
+    display: none;
+}
