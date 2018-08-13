@@ -382,6 +382,11 @@ var Table = {
             }
             ks.eq(i).text(v);
         }
+    },
+    //增加记录
+    add: function(addId, addUrl){
+        var modal = $("#" + addId);
+        modal.modal('show');
     }
 };
 

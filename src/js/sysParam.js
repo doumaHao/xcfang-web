@@ -1,7 +1,7 @@
 // 框架
 var host = "http://192.168.1.103:8081";//主机地址
-var loginPage = "http://192.168.1.22:8080/html/sys/login.html";//登录地址
-var indexPage = "http://192.168.1.22:8080/html/ctt/ctt-list.html";//首页地址
+var loginPage = "file:///C:/workspace/xcfang-web/dist/html/sys/login.html";//登录地址
+var indexPage = "file:///C:/workspace/xcfang-web/dist/html/operate/city-list.html";//首页地址
 
 // 公用枚举
 common_oper_state_enum = "L=未绪&R=就绪&S=成功&F=失败";//状态表操作状态

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('../common/common_head.html')
+</head>
+
+<body class="no-skin">
+<div id="navbar" class="navbar navbar-default ace-save-state">
+    @@include('../common/common_top.html')
+</div>
+
+<div class="main-container ace-save-state" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.loadState('main-container')
+        } catch (e) {
+        }
+    </script>
+    @@include('../common/common_sidebar.html')
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            @@include('../common/common_nav.html')
+            @@include('../common/common_style.html')
+            <div class="row">
+
+                <!--本页内容-->
+                <div class="col-xs-12 table-div">
+
+                    <div class="widget-box">
+                        <div class="widget-header widget-header-flat">
+                            <h4 class="widget-title smaller">检索条件 </h4>
+                        </div>
+
+                        <div class="widget-body">
+                            <div class="widget-main">
+                                <p>
+                                    <button id="btn-query" class="btn btn-white btn-info btn-bold">
+                                        <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>
+                                        查询
+                                    </button>
+
+                                    <button id="btn-clear" class="btn btn-white btn-warning btn-bold">
+                                        <i class="ace-icon fa fa-trash-o bigger-120 orange"></i>
+                                        清空
+                                    </button>
+
+                                    <a href="" id="btn-detail" class="btn btn-white btn-purple btn-bold"
+                                       data-toggle="modal">
+                                        <i class="ace-icon fa fa-folder-open-o bigger-120 orange"></i>
+                                        详情
+                                    </a>
+
+                                    <button id="btn-add" class="btn btn-white btn-info btn-bold">
+                                        <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>
+                                        增加
+                                    </button>
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget-box">
+                        <div class="widget-header widget-header-flat">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <h4 class="widget-title smaller">检索结果</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="widget-body">
+                            <table id="simple-table" class="table  table-bordered table-hover">
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="widget-hide">
+                        @@include('ctt-detail.html')
+                        @@include('ctt-add.html')
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        @@include('../common/common_boot.html')
+    </div>
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+    </a>
+</div>
+@@include('../common/common_js.html')
+
+<script type="text/javascript">
+    $(function () {
+
+        var head = {
+            "tId": 'tid',
+            "listCode": "唯一识别号",
+            "outListCode": "资金识别号",
+            "receiverName": "收款人姓名",
+            "capitalOrgCode": "资金方编号",
+            "sellerOrgCode": "资产方编号",
+            "applyTime": "申请时间$date",
+            "loanAmt": "贷款金额",
+            "compreRate": "综合利率",
+            "inteRate": "贷款利率",
+            "loanState": "贷款状态$enum->" + common_loan_state_enum,
+            "overState": "逾期状态$enum->" + common_repay_isOver_enum
+        };
+        Table.autoInit("simple-table", "/ctt/list", head);
+
+        //打开详情
+        $("#btn-detail").click(function () {
+            Table.detail("my-modal", "/ctt/info");
+        });
+
+        $("#btn-add").click(function(){
+            Table.add("city-add", "/ctt/info");
+        });
+
+    });
+</script>
+
+</body>
+</html>

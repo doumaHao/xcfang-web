@@ -36,3 +36,7 @@
 .profile-user-info-hide{
     display: none;
 }
+
+.body-add .add-value{
+    width: 100%;
+}
