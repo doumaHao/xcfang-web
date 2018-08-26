@@ -44,7 +44,7 @@
                     <div class="center">
                         <h1>
                             <i class="ace-icon fa fa-leaf green"></i>
-                            <span class="red">房管</span>
+                            <span class="red">房管天下</span>
                             <span class="white" id="id-text2">平台</span>
                         </h1>
                         <h4 class="blue" id="id-company-text">&copy; 宣城希盛软件科技有限公司</h4>
@@ -101,12 +101,222 @@
                                         </fieldset>
                                     </form>
 
+                                    <!--第三方登录 ↓↓↓↓↓↓↓-->
+                                    <div class="social-or-login center">
+                                        <span class="bigger-110">第三方授权登录</span>
+                                    </div>
+                                    <div class="space-6"></div>
+                                    <div class="social-login center">
+                                        <a class="btn btn-primary">
+                                            <i class="ace-icon fa fa-facebook"></i>
+                                        </a>
+
+                                        <a class="btn btn-info">
+                                            <i class="ace-icon fa fa-twitter"></i>
+                                        </a>
+
+                                        <a class="btn btn-danger">
+                                            <i class="ace-icon fa fa-google-plus"></i>
+                                        </a>
+                                    </div>
+                                    <!--第三方登录 ↑↑↑↑↑↑↑↑↑↑↑-->
+
                                 </div>
+
+                                <!--忘记密码和注册 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+                                <div class="toolbar clearfix">
+                                    <div>
+                                        <a href="#" data-target="#forgot-box" class="forgot-password-link">
+                                            <i class="ace-icon fa fa-arrow-left"></i>
+                                            忘记密码
+                                        </a>
+                                    </div>
+
+                                    <div>
+                                        <a href="#" data-target="#signup-box" class="user-signup-link">
+                                            注册用户
+                                            <i class="ace-icon fa fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!--忘记密码和注册 ↑↑↑↑↑↑↑↑↑↑↑-->
 
                             </div><!-- /.widget-body -->
                         </div><!-- /.login-box -->
 
+                        <!--忘记密码页面 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+                        <div id="forgot-box" class="forgot-box widget-box no-border">
+                            <div class="widget-body">
+                                <div class="widget-main">
+                                    <h4 class="header red lighter bigger">
+                                        <i class="ace-icon fa fa-key"></i>
+                                        找回密码
+                                    </h4>
+
+                                    <div class="space-6"></div>
+                                    <p>
+                                        请输入您的手机号和短信验证码
+                                    </p>
+                                    <form>
+                                        <fieldset>
+                                            <label class="block clearfix">
+                                                <span class="block input-icon input-icon-right">
+                                                    <input class="form-control"
+                                                           placeholder="请输入手机号码"/>
+                                                    <i class="ace-icon fa fa-comment"></i>
+                                                </span>
+                                            </label>
+                                            <label class="block clearfix">
+                                                <button type="button" class="width-35 pull-right btn btn-sm btn-info">
+                                                    <i class="ace-icon fa fa-gavel"></i>
+                                                    <span class="bigger-110">发送(60)</span>
+                                                </button>
+                                            </label>
+                                            <label class="block clearfix">
+                                                <span class="block input-icon input-icon-right">
+                                                    <input class="form-control"
+                                                           placeholder="请输入短信验证码"/>
+                                                    <i class="ace-icon fa fa-comment-o"></i>
+                                                </span>
+                                            </label>
+
+                                            <div class="clearfix">
+                                                <a type="button" class="width-35 pull-right btn btn-sm btn-danger">
+                                                    <i class="ace-icon fa fa-lightbulb-o"></i>
+                                                    <span class="bigger-110">找回密码</span>
+                                                </a>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div><!-- /.widget-main -->
+
+                                <div class="toolbar center">
+                                    <a href="#" data-target="#login-box" class="back-to-login-link">
+                                        返回登录
+                                        <i class="ace-icon fa fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div><!-- /.widget-body -->
+                        </div><!-- /.forgot-box -->
+                        <!--忘记密码页面 ↑↑↑↑↑↑↑↑↑↑↑-->
+
+                        <!--注册用户页面 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+                        <div id="signup-box" class="signup-box widget-box no-border">
+                            <div class="widget-body">
+                                <div class="widget-main">
+                                    <h4 class="header green lighter bigger">
+                                        <i class="ace-icon fa fa-users blue"></i>
+                                        注册用户
+                                    </h4>
+
+                                    <div class="space-6"></div>
+                                    <p> 请输入您的注册信息 </p>
+
+                                    <form>
+                                        <fieldset>
+
+                                            <label class="block clearfix">
+                                                <span class="block input-icon input-icon-right">
+                                                    <input id="register-login" class="form-control"
+                                                           placeholder="登录名"/>
+                                                    <i class="ace-icon fa fa-black-tie"></i>
+                                                </span>
+                                            </label>
+
+                                            <label class="block clearfix">
+                                                <span class="block input-icon input-icon-right">
+                                                    <input id="register-password" type="password" class="form-control"
+                                                           placeholder="密码"/>
+                                                    <i class="ace-icon fa fa-lock"></i>
+                                                </span>
+                                            </label>
+
+                                            <label class="block clearfix">
+                                                <span class="block input-icon input-icon-right">
+                                                    <input id="register-password2" type="password" class="form-control"
+                                                           placeholder="确认密码"/>
+                                                    <i class="ace-icon fa fa-retweet"></i>
+                                                </span>
+                                            </label>
+
+                                            <label class="block clearfix">
+                                                <span class="block input-icon input-icon-right">
+                                                    <input id="register-phone" class="form-control"
+                                                           placeholder="手机号码"/>
+                                                    <i class="ace-icon fa fa-comment"></i>
+                                                </span>
+                                            </label>
+
+                                            <label class="block clearfix">
+                                                <button id="btn-send" type="button"
+                                                        class="width-65 pull-right btn btn-sm btn-info">
+                                                    <span class="bigger-110">发送</span>
+                                                </button>
+                                            </label>
+
+                                            <label class="block clearfix">
+                                                <span class="block input-icon input-icon-right">
+                                                    <input id="register-verifyCode" class="form-control"
+                                                           placeholder="短信验证码"/>
+                                                    <i class="ace-icon fa fa-comment-o"></i>
+                                                </span>
+                                            </label>
+
+                                            <label class="block">
+                                                <input id="register-agree" type="checkbox" class="ace"/>
+                                                <span class="lbl">
+															我同意
+															<a href="#">房管天下用户协议</a>
+														</span>
+                                            </label>
+
+                                            <div class="space-24"></div>
+
+                                            <div class="clearfix">
+                                                <button type="reset" class="width-30 pull-left btn btn-sm">
+                                                    <i class="ace-icon fa fa-refresh"></i>
+                                                    <span class="bigger-110">重置</span>
+                                                </button>
+
+                                                <button id="btn-register" type="button"
+                                                        class="width-65 pull-right btn btn-sm btn-success">
+                                                    <span class="bigger-110">注册</span>
+
+                                                    <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+                                                </button>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+
+                                <div class="toolbar center">
+                                    <a href="#" data-target="#login-box" class="back-to-login-link">
+                                        <i class="ace-icon fa fa-arrow-left"></i>
+                                        返回登录
+                                    </a>
+                                </div>
+                            </div><!-- /.widget-body -->
+                        </div><!-- /.signup-box -->
+                        <!--注册用户页面 ↑↑↑↑↑↑↑↑↑↑↑-->
+
                     </div><!-- /.position-relative -->
+
+                    <!--登录页面主体色  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+                    <div class="navbar-fixed-top align-right">
+                        <br/>
+                        &nbsp;
+                        <a id="btn-login-dark" href="#">暗系</a>
+                        &nbsp;
+                        <span class="blue">/</span>
+                        &nbsp;
+                        <a id="btn-login-blur" href="#">过度系</a>
+                        &nbsp;
+                        <span class="blue">/</span>
+                        &nbsp;
+                        <a id="btn-login-light" href="#">亮系</a>
+                        &nbsp; &nbsp; &nbsp;
+                    </div>
+                    <!--登录页面主体色  ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
 
                 </div>
             </div><!-- /.col -->
@@ -169,6 +379,7 @@
                     alert(data.errMsg);
                 }
             });
+
         });
 
         //如果记住密码, 则显示
@@ -183,6 +394,98 @@
             $("#loginName").val(loginName);
             $("#loginPassword").val(loginPassword);
         }
+
+        //跳转到找回密码和用户注册页面
+        $(document).on('click', '.toolbar a[data-target]', function (e) {
+            e.preventDefault();
+            var target = $(this).data('target');
+            $('.widget-box.visible').removeClass('visible');//hide others
+            $(target).addClass('visible');//show target
+        });
+
+        //登录页面主体色切换
+        $('#btn-login-dark').on('click', function (e) {
+            $('body').attr('class', 'login-layout');
+            $('#id-text2').attr('class', 'white');
+            $('#id-company-text').attr('class', 'blue');
+            e.preventDefault();
+        });
+        $('#btn-login-light').on('click', function (e) {
+            $('body').attr('class', 'login-layout light-login');
+            $('#id-text2').attr('class', 'grey');
+            $('#id-company-text').attr('class', 'blue');
+            e.preventDefault();
+        });
+        $('#btn-login-blur').on('click', function (e) {
+            $('body').attr('class', 'login-layout blur-login');
+            $('#id-text2').attr('class', 'white');
+            $('#id-company-text').attr('class', 'light-blue');
+            e.preventDefault();
+        });
+
+        //登录名离开校验登录名是否已经存在
+
+
+        //点击发送短信验证码
+        $("#btn-send").click(function(){
+
+            var phone = $("#register-phone").val();
+            if(Data.isEmpty(phone)){
+                alert("手机号码不能为空");
+                return;
+            }
+
+            //计算前端定时
+            Time.interval("btn-send", 60);
+
+            var url = "/msg/sendMsg";
+            var param = {};
+            param.phone = "18221859429";
+            Ajax.post(url, param, function(rst){
+
+            });
+        });
+
+        //点击注册按钮
+        $("#btn-register").click(function () {
+            var login = $("#register-login").val();
+            var password = $("#register-password").val();
+            var password2 = $("#register-password2").val();
+            var phone = $("#register-phone").val();
+            var verifyCode = $("#register-verifyCode").val();
+            var agree = $("#register-agree");
+            if (Data.isEmpty(login)
+                || Data.isEmpty(password)
+                || Data.isEmpty(password2)
+                || Data.isEmpty(phone)
+                || Data.isEmpty(verifyCode)) {
+                alert("登录名、密码、确定密码、手机号和验证码均不可为空");
+                return;
+            }
+            if (password != password2) {
+                alert("密码和确认密码不一致");
+                return;
+            }
+            if (!agree.is(":checked")) {
+                alert("请勾选同意房管天下用户协议");
+                return;
+            }
+            var url = "/user/register4web";
+            var param = {};
+            param.login = login;
+            param.password = password;
+            param.password2 = password2;
+            param.phone = phone;
+            param.verifyCode = verifyCode;
+            Ajax.post(url, param, function(data){
+                if(data == true){
+                    alert("注册成功,前往登录试一试吧");
+                    Page.goto(loginPage);
+                } else {
+                    alert("注册失败");
+                }
+            });
+        });
 
     });
 </script>

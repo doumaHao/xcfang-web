@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('../common/common_head.html')
+</head>
+
+<body class="no-skin">
+<div id="navbar" class="navbar navbar-default ace-save-state">
+    @@include('../common/common_top.html')
+</div>
+
+<div class="main-container ace-save-state" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.loadState('main-container')
+        } catch (e) {
+        }
+    </script>
+    @@include('../common/common_sidebar.html')
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            @@include('../common/common_nav.html')
+            @@include('../common/common_style.html')
+            <div class="row">
+
+                欢迎您，<span id="cur-login"></span>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        @@include('../common/common_boot.html')
+    </div>
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+    </a>
+</div>
+@@include('../common/common_js.html')
+
+<script type="text/javascript">
+    $(function () {
+
+        var url = "/user/curUserInfo";
+        Ajax.post(url, {}, function(rst){
+            if(rst != null){
+                $("#cur-login").text(rst.login);
+            }
+        });
+
+    });
+</script>
+
+</body>
+</html>

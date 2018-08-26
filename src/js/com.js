@@ -12,8 +12,8 @@ var Frame = {
             //打开详情加载详情数据
             if (hasDetail && detialUrl != null) {
                 if (thisTr.next().hasClass("open")) {
-                    var tId = $(this).parents("tr").find("th[val='tId']").text();
-                    Ajax.get(detialUrl, {"tId": tId}, function (data) {
+                    var tid = $(this).parents("tr").find("th[val='tid']").text();
+                    Ajax.get(detialUrl, {"tid": tid}, function (data) {
                         window.tableData = data;
                         if (data != null) {
                             detailTr.find(".profile-info-value").each(function (i, o) {
@@ -220,14 +220,18 @@ var Table = {
         if (thiz != null && thiz.hasClass("disabled")) {
             return;
         }
+
+        var tableId = tableObj.attr("id");
+
         //清除原table内容
         tableObj.empty();
+
 
         Ajax.get(pageUrl, param, function (data) {
             var body = data.list;
             page.text(data.current);
             //列表初始化
-            Table.init("simple-table", head, body);
+            Table.init(tableId, head, body);
             Table.setPageInfo(data, pageOption);
         });
     },
@@ -322,7 +326,7 @@ var Table = {
             alert("请选择1列查看");
             return;
         }
-        var tid = checked.closest("tr").find("[val='tId']").text();
+        var tid = checked.closest("tr").find("[val='tid']").text();
         if (tid == null || tid == "") {
             alert("tId不能为空");
             return;
@@ -333,35 +337,61 @@ var Table = {
         modal.modal('show');
         var url = detailUrl;
         var param = {};
-        param.tId = tid;
+        param.tid = tid;
         Ajax.get(url, param, function (data) {
             if (data != null) {
                 var modalBody = modal.find(".modal-body");
                 //删除之前clone的table
-                modalBody.find(".profile-user-info").each(function(){
-                    if(!$(this).hasClass("profile-user-info-hide")) {
+                modalBody.find(".profile-user-info").each(function () {
+                    if (!$(this).hasClass("profile-user-info-hide")) {
                         $(this).remove();
                     }
                 });
-                if (data instanceof Array) {
-                    var table = modalBody.find(".profile-user-info");
-                    //奇数偶数flg
-                    var flg = false;
-                    for (var i = 0; i < data.length; i++) {
-                        var newTable = table.clone();
-                        Table.detailSetData(newTable, data[i]);
-                        newTable.removeClass("profile-user-info-hide");
-                        modalBody.append(newTable);
-
-                        //偶数行背景色调整
-                        flg = !flg;
-                        if (flg) {
-                            newTable.addClass("bg-efdede");
+                //判断展示方式 div形式 还是table形式
+                if (modalBody.find("table").length == 0) {
+                    if (data instanceof Array) {
+                        var div = modalBody.find(".profile-user-info");
+                        for (var i = 0; i < data.length; i++) {
+                            var newDiv = div.clone();
+                            Table.detailSetData(newDiv, data[i]);
+                            newDiv.removeClass("profile-user-info-hide");
+                            modalBody.append(newDiv);
                         }
+                    } else {
+                        var div = modalBody.find(".profile-user-info");
+                        var newDiv = div.clone();
+                        Table.detailSetData(newDiv, data);
+                        newDiv.removeClass("profile-user-info-hide");
+                        modalBody.append(newDiv);
                     }
                 } else {
-                    var table = modal.find(".modal-body").find(".profile-user-info");
-                    Table.detailSetData(table, data);
+                    if (data instanceof Array) {
+                        var div = modalBody.find(".profile-user-info");
+                        var newDiv = div.clone();
+                        newDiv.removeClass("profile-user-info-hide");
+                        modalBody.append(newDiv);
+
+                        var cpTable = div.find("table");
+                        var showTable = newDiv.find("table");
+                        var cpTr = cpTable.find("tbody").find("tr").eq(0);
+                        for (var i = 0; i < data.length; i++) {
+                            var newTr = cpTr.clone();
+                            Table.detailSetData(newTr, data[i]);
+                            showTable.append(newTr);
+                        }
+                    } else {
+                        var div = modalBody.find(".profile-user-info");
+                        var newDiv = div.clone();
+                        newDiv.removeClass("profile-user-info-hide");
+                        modalBody.append(newDiv);
+
+                        var cpTable = div.find("table");
+                        var showTable = newDiv.find("table");
+                        var cpTr = cpTable.find("tbody").find("tr").eq(0);
+                        var newTr = cpTr.clone();
+                        Table.detailSetData(newTr, data[i]);
+                        showTable.append(newTr);
+                    }
                 }
             }
         });
@@ -383,6 +413,7 @@ var Table = {
             ks.eq(i).text(v);
         }
     },
+
     //增加记录
     add: function(addId, addUrl){
         var modal = $("#" + addId);
@@ -517,5 +548,57 @@ var Page = {
     //画面跳转
     goto: function (url) {
         window.location.href = url;
+    }
+};
+
+//数据校验
+var Data = {
+    //为空
+    isEmpty: function (v) {
+        if (v == null || v == "") {
+            return true;
+        } else {
+            return false;
+        }
+    },
+    //不为空
+    isNotEmpty: function (v) {
+        if (v != null & v != "") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+};
+
+//倒计时
+var Time = {
+    //倒计时
+    interval: function (id, max) {
+        var obj = $("#" + id);
+        obj.append("<b>(" + max + ")</b>");
+        obj.attr("disabled", "disabled");
+        setInterval(function () {
+            var time = obj.find("b").text();
+            time = time.replace("(", "");
+            time = time.replace(")", "");
+            time = parseInt(time);
+            if (time > 0) {
+                obj.find("b").text("(" + (time - 1) + ")");
+            } else {
+                obj.find("b").remove();
+                obj.removeAttr("disabled");
+            }
+        }, 1000);
+    }
+};
+
+//事件
+var Event = {
+    //阻止事件冒泡
+    stop: function (ev) {
+        var oEvent = ev || event;
+        oEvent.cancelBubble = true;
+        oEvent.stopPropagation();
     }
 };

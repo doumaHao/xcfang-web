@@ -416,15 +416,6 @@
     </div>
 
     <ul class="nav nav-list">
-
-        <li class="">
-            <a href="../user/user-index.html">
-                <i class="menu-icon fa fa-book"></i>
-                <span class="menu-text">我的主页</span>
-            </a>
-            <b class="arrow"></b>
-        </li>
-
         <li class="">
             <a href="../ctt/ctt-list.html">
                 <i class="menu-icon fa fa-book"></i>
@@ -432,7 +423,6 @@
             </a>
             <b class="arrow"></b>
         </li>
-
         <li class="">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-bookmark-o"></i>
@@ -686,109 +676,12 @@
                         </div>
 
                         <div class="widget-body">
-                            <table id="city-table" class="table  table-bordered table-hover">
+                            <table id="simple-table" class="table  table-bordered table-hover">
                             </table>
                         </div>
                     </div>
 
                     <div class="widget-hide">
-                        <div id="my-modal" class="modal fade" tabindex="-1">
-    <div class="modal-dialog width-80">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 class="smaller lighter blue no-margin">城市详情</h3>
-            </div>
-
-            <div class="modal-body">
-
-                <div class="profile-user-info profile-user-info-striped profile-user-info-hide">
-                    <div class="profile-info-row">
-                        <div class="profile-info-name">tid</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-tid"></span>
-                        </div>
-                        <div class="profile-info-name">城市名称</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-name"></span>
-                        </div>
-                        <div class="profile-info-name"></div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click"></span>
-                        </div>
-                        <div class="profile-info-name"></div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click"></span>
-                        </div>
-                    </div>
-                    <div class="profile-info-row">
-                        <div class="profile-info-name">创建人</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-tcreator"></span>
-                        </div>
-                        <div class="profile-info-name">创建时间</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-tcreater$date"></span>
-                        </div>
-                        <div class="profile-info-name">修改人</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-tmodifyer"></span>
-                        </div>
-                        <div class="profile-info-name">修改时间</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-tmodify$date"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal-footer">
-            <button class="btn btn-sm btn-danger pull-right" data-dismiss="modal">
-                <i class="ace-icon fa fa-times"></i>
-                关闭
-            </button>
-        </div>
-    </div>
-</div>
-
-                        <div id="city-add" class="modal fade" tabindex="-1">
-    <div class="modal-dialog width-80">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 class="smaller lighter blue no-margin">增加城市</h3>
-            </div>
-
-            <div class="modal-body body-add">
-                <div class="row">
-                    <form class="form-horizontal">
-                        <div class="col-xs-6">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right">城市名称</label>
-                                <div class="col-sm-9">
-                                    <input id="add-name" class="add-value" type="text"/>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal-footer">
-            <button id="cttAdd-btn-add" class="btn btn-sm btn-danger pull-right" data-dismiss="modal">
-                <i class="ace-icon fa fa-pencil-square-o"></i>
-                保存
-            </button>
-            <button class="btn btn-sm btn-info pull-right" data-dismiss="modal">
-                <i class="ace-icon fa fa-times"></i>
-                关闭
-            </button>
-        </div>
-    </div>
-</div>
-
                     </div>
                 </div>
 
@@ -1060,44 +953,30 @@
 <script type="text/javascript">
     $(function () {
 
-        var head = {
-            "tid": 'tid',
-            "name": "名称",
-            "tcreator": "创建人",
-            "tcreater": "创建时间$date",
-            "tmodifyer": "修改人",
-            "tmodify": "修改时间$date",
-        };
-        Table.autoInit("city-table", "/city/list", head);
-
-        //打开详情
-        $("#btn-detail").click(function () {
-            Table.detail("my-modal", "/city/info");
-        });
-
-        //打开增加画面
-        $("#btn-add").click(function () {
-            Table.add("city-add", "/city/info");
-        });
-
-        //确定增加
-        $("#cttAdd-btn-add").click(function (ev) {
-            var name = $("#add-name").val();
-            if (Data.isEmpty(name)) {
-                alert("城市名称不能为空");
-                Event.stop(ev);
-                return;
-            }
-
-            var url = "/city/addCity";
-            var param = {};
-            param.name = name;
-            Ajax.post(url, param, function (rst) {
-                if (rst != null) {
-                    alert("增加成功");
-                }
-            });
-        });
+//        var head = {
+//            "tId": 'tid',
+//            "listCode": "唯一识别号",
+//            "outListCode": "资金识别号",
+//            "receiverName": "收款人姓名",
+//            "capitalOrgCode": "资金方编号",
+//            "sellerOrgCode": "资产方编号",
+//            "applyTime": "申请时间$date",
+//            "loanAmt": "贷款金额",
+//            "compreRate": "综合利率",
+//            "inteRate": "贷款利率",
+//            "loanState": "贷款状态$enum->" + common_loan_state_enum,
+//            "overState": "逾期状态$enum->" + common_repay_isOver_enum
+//        };
+//        Table.autoInit("simple-table", "/ctt/list", head);
+//
+//        //打开详情
+//        $("#btn-detail").click(function () {
+//            Table.detail("my-modal", "/ctt/info");
+//        });
+//
+//        $("#btn-add").click(function(){
+//            Table.add("city-add", "/ctt/info");
+//        });
 
     });
 </script>

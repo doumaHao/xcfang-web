@@ -3,38 +3,20 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 class="smaller lighter blue no-margin">合同详情</h3>
+                <h3 class="smaller lighter blue no-margin">城市详情</h3>
             </div>
 
             <div class="modal-body">
 
-                <div class="profile-user-info profile-user-info-striped">
+                <div class="profile-user-info profile-user-info-striped profile-user-info-hide">
                     <div class="profile-info-row">
-                        <div class="profile-info-name">唯一识别号</div>
+                        <div class="profile-info-name">tid</div>
                         <div class="profile-info-value">
-                            <span class="editable editable-click" k="-listCode"></span>
+                            <span class="editable editable-click" k="-tid"></span>
                         </div>
-                        <div class="profile-info-name">资金方编号</div>
+                        <div class="profile-info-name">城市名称</div>
                         <div class="profile-info-value">
-                            <span class="editable editable-click" k="-capitalOrgCode"></span>
-                        </div>
-                        <div class="profile-info-name">资产方编号</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-sellerOrgCode"></span>
-                        </div>
-                        <div class="profile-info-name">产品编号</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-prodCode"></span>
-                        </div>
-                    </div>
-                    <div class="profile-info-row">
-                        <div class="profile-info-name">合同开始日期</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-cttTime$date"></span>
-                        </div>
-                        <div class="profile-info-name">合同结束日期</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-cttTime$date"></span>
+                            <span class="editable editable-click" k="-name"></span>
                         </div>
                         <div class="profile-info-name"></div>
                         <div class="profile-info-value">
@@ -46,111 +28,21 @@
                         </div>
                     </div>
                     <div class="profile-info-row">
-                        <div class="profile-info-name">收款人姓名</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-receiverName"></span>
-                        </div>
-                        <div class="profile-info-name">收款人身份证号</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-receiverIdno"></span>
-                        </div>
-                        <div class="profile-info-name">收款账号</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-receiveAcNo"></span>
-                        </div>
-                        <div class="profile-info-name"></div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click"></span>
-                        </div>
-                    </div>
-                    <div class="profile-info-row">
-                        <div class="profile-info-name">申请时间</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-applyTime"></span>
-                        </div>
-                        <div class="profile-info-name">贷款金额</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-loanAmt"></span>
-                        </div>
-                        <div class="profile-info-name">综合利率</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-compreRate"></span>
-                        </div>
-                        <div class="profile-info-name">贷款利率</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-inteRate"></span>
-                        </div>
-                    </div>
-                    <div class="profile-info-row">
-                        <div class="profile-info-name">罚息利率</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-aFineRate"></span>
-                        </div>
-                        <div class="profile-info-name">复利利率</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-bFineRate"></span>
-                        </div>
-                        <div class="profile-info-name">贷款期限类型</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-loanType$enum->DAY=天&WEEK=周&MONTH=月&SEASON=季&YEAR=年"></span>
-                        </div>
-                        <div class="profile-info-name">贷款期限</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-loanPeriod"></span>
-                        </div>
-                    </div>
-                    <div class="profile-info-row">
-                        <div class="profile-info-name">放款账户</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-loanCardNo"></span>
-                        </div>
-                        <div class="profile-info-name">还款方式</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-repayModeCode$enum->M0000001=等额本息&M0000002=按月付息到期还本&M0000003=等额本金&M0000004=按季付息到期还本&M0000005=等额本息"></span>
-                        </div>
-                        <div class="profile-info-name">服务费编号</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-serveFeeNo"></span>
-                        </div>
-                        <div class="profile-info-name">贷款状态</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-loanState"></span>
-                        </div>
-                    </div>
-                    <div class="profile-info-row">
-                        <div class="profile-info-name">逾期状态</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-overState$enum->Y=逾期&N=正常"></span>
-                        </div>
-                        <div class="profile-info-name">逾期天数</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-overDay"></span>
-                        </div>
-                        <div class="profile-info-name"></div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click"></span>
-                        </div>
-                        <div class="profile-info-name"></div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click"></span>
-                        </div>
-                    </div>
-                    <div class="profile-info-row">
-                        <div class="profile-info-name">创建时间</div>
-                        <div class="profile-info-value">
-                            <span class="editable editable-click" k="-tCreate$date"></span>
-                        </div>
                         <div class="profile-info-name">创建人</div>
                         <div class="profile-info-value">
-                            <span class="editable editable-click" k="-tCreator"></span>
+                            <span class="editable editable-click" k="-tcreator"></span>
                         </div>
-                        <div class="profile-info-name">修改时间</div>
+                        <div class="profile-info-name">创建时间</div>
                         <div class="profile-info-value">
-                            <span class="editable editable-click" k="-tModify$date"></span>
+                            <span class="editable editable-click" k="-tcreater$date"></span>
                         </div>
                         <div class="profile-info-name">修改人</div>
                         <div class="profile-info-value">
-                            <span class="editable editable-click" k="-tModifier"></span>
+                            <span class="editable editable-click" k="-tmodifyer"></span>
+                        </div>
+                        <div class="profile-info-name">修改时间</div>
+                        <div class="profile-info-value">
+                            <span class="editable editable-click" k="-tmodify$date"></span>
                         </div>
                     </div>
                 </div>
