@@ -68,7 +68,38 @@ var Frame = {
             $("#iframe-nav-small1").text(nav1);
             $("#iframe-nav-small2").text(nav2);
         }
-    }
+    },
+
+    //设置数据字典下拉框-后端动态
+    setSelectUrl: function () {
+        $("select[selectUrl]").each(function () {
+            var thiz = $(this);
+            var selectUrl = thiz.attr("selectUrl");
+            Ajax.post(selectUrl, {}, function (rst) {
+                var newOption = $("<option value=''> 请选择 </option>");
+                thiz.append(newOption);
+                for (var i = 0; i < rst.length; i++) {
+                    var newOption = $("<option value='" + rst[i].key + "'>" + rst[i].value + "</option>");
+                    thiz.append(newOption);
+                }
+            });
+        });
+    },
+    //设置数据字典下拉款-前端静态
+    setSelectEnum: function () {
+        $("select[selectEnum]").each(function () {
+            var thiz = $(this);
+            var selectEnum = thiz.attr("selectEnum");
+            var selectStr = window[selectEnum];
+            var enums = selectStr.split("&");
+            var newOption = $("<option value=''> 请选择 </option>");
+            thiz.append(newOption);
+            for (var i = 0; i < enums.length; i++) {
+                var newOption = $("<option value='" + enums[i].split("=")[0] + "'>" + enums[i].split("=")[1] + "</option>");
+                thiz.append(newOption);
+            }
+        });
+    },
 };
 
 // 列表
@@ -291,7 +322,7 @@ var Table = {
                 dataFm.enum = true;
                 var headStrEnum = headStr.split("$enum");
                 headStr = headStrEnum[0];
-                dataFm.enumfm = headStrEnum[1].replace("->", "");
+                dataFm.enumfm = window[headStrEnum[1].replace("->", "")];
                 continue;
             }
             overFlg = false;
@@ -415,7 +446,7 @@ var Table = {
     },
 
     //增加记录
-    add: function(addId, addUrl){
+    add: function (addId, addUrl) {
         var modal = $("#" + addId);
         modal.modal('show');
     }
@@ -458,15 +489,18 @@ var Ajax = {
             complete: function (XMLHttpRequest, textStatus) {
                 //后台异常
                 if (XMLHttpRequest.status == 500) {
+                    var responseText = XMLHttpRequest.responseText;
+                    var response = JSON.parse(responseText);
+                    var errMsg = response.message;
                     //登录异常
-                    if (XMLHttpRequest.responseText.indexOf("exception") > 0
-                        && XMLHttpRequest.responseText.indexOf("java.lang.RuntimeException") > 0
-                        && XMLHttpRequest.responseText.indexOf("message") > 0
-                        && XMLHttpRequest.responseText.indexOf("message") > 0) {
+                    if (errMsg == "登录状态异常"
+                        && response.exception == "java.lang.RuntimeException") {
                         var reLogin = confirm("登录状态异常");
                         if (reLogin) {
                             Page.goto(loginPage)
                         }
+                    } else {
+                        alert(errMsg);
                     }
                 }
             }
