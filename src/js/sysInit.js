@@ -3,4 +3,7 @@ $(function () {
     Frame.setSelectUrl();
     //设置数据字典下拉款-前端动态
     Frame.setSelectEnum();
+
+    //设置readonly控制
+    Frame.setReadonly();
 });

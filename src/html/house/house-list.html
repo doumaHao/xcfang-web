@@ -77,8 +77,8 @@
                     </div>
 
                     <div class="widget-hide">
-                        @@include('city-detail.html')
-                        @@include('city-add.html')
+                        @@include('house-detail.html')
+                        @@include('house-add.html')
                     </div>
                 </div>
 
@@ -107,11 +107,11 @@
             "tmodifyer": "修改人",
             "tmodify": "修改时间$date",
         };
-        Table.autoInit("city-table", "/city/list", head);
+        Table.autoInit("city-table", "/house/list", head);
 
         //打开详情
         $("#btn-detail").click(function () {
-            Table.detail("my-modal", "/city/info");
+            Table.detail("my-modal", "/house/info");
         });
 
         //打开增加画面
@@ -136,6 +136,46 @@
                     alert("增加成功");
                 }
             });
+        });
+
+        //总价和面积修改会改变单价
+        $("#add-totalPrice").add("#add-area").keyup(function () {
+            var unitPriceObj = $("#add-unitPrice");
+            var totalPrice = $("#add-totalPrice").val();
+            var area = $("#add-area").val();
+            if (Data.isNotEmpty(totalPrice) && Data.isNotEmpty(area)) {
+                totalPrice = totalPrice * 10000;
+                var unitPrice = parseFloat(totalPrice) * 100 / parseFloat(area);
+                unitPrice = Math.round(unitPrice);
+                unitPrice = unitPrice / 100;
+                unitPriceObj.val(unitPrice);
+            } else {
+                unitPriceObj.val("");
+            }
+        });
+
+        //当前楼层和总楼层修改会改变当前楼层等级
+        $("#add-thisFloor").add("#add-totalFloor").keyup(function () {
+            var thisFloorTypeObj = $("#add-thisFloorType");
+            var thisFloor = $("#add-thisFloor").val();
+            var totalFloor = $("#add-totalFloor").val();
+            if (Data.isNotEmpty(thisFloor) && Data.isNotEmpty(totalFloor)) {
+                thisFloor = parseInt(thisFloor);
+                totalFloor = parseInt(totalFloor);
+                if (thisFloor > 0 && thisFloor <= totalFloor) {
+                    if (thisFloor < (totalFloor / 3 * 1)) {
+                        thisFloorTypeObj.val("low");
+                    } else if (thisFloor < (totalFloor / 3 * 2)) {
+                        thisFloorTypeObj.val("medium");
+                    } else {
+                        thisFloorTypeObj.val("high");
+                    }
+                } else {
+                    thisFloorTypeObj.val("");
+                }
+            } else {
+                thisFloorTypeObj.val("");
+            }
         });
 
     });

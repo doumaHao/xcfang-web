@@ -100,6 +100,19 @@ var Frame = {
             }
         });
     },
+
+    //设置readonly不可点击
+    setReadonly: function () {
+        //select设置为readonly则点击无效
+        $("select").each(function () {
+            var thiz = $(this);
+            if (!!thiz.attr("readonly")) {
+                thiz.find("option").hide();
+            } else {
+                thiz.find("option").show();
+            }
+        });
+    },
 };
 
 // 列表
@@ -446,7 +459,7 @@ var Table = {
     },
 
     //增加记录
-    add: function (addId, addUrl) {
+    add: function (addId) {
         var modal = $("#" + addId);
         modal.modal('show');
     }

@@ -757,20 +757,229 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 class="smaller lighter blue no-margin">增加城市</h3>
+                <h3 class="smaller lighter blue no-margin">增加房源</h3>
             </div>
 
             <div class="modal-body body-add">
                 <div class="row">
                     <form class="form-horizontal">
-                        <div class="col-xs-6">
+
+                        <div class="col-xs-4">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right">城市名称</label>
+                                <label class="col-sm-3 control-label no-padding-right">小区</label>
                                 <div class="col-sm-9">
-                                    <input id="add-name" class="add-value" type="text"/>
+                                    <select id="add-villageId" class="add-value" selectUrl="/dictionary/villages">
+                                    </select>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">总价</label>
+                                <div class="col-sm-9">
+                                    <div class="input-group add-value">
+                                        <input id="add-totalPrice" type="text" class="form-control" >
+                                        <span class="input-group-addon" >万元</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">面积</label>
+                                <div class="col-sm-9">
+                                    <div class="input-group add-value">
+                                        <input id="add-area" type="text" class="form-control" >
+                                        <span class="input-group-addon" >平方米</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">单价</label>
+                                <div class="col-sm-9">
+                                    <div class="input-group add-value" >
+                                        <input id="add-unitPrice" type="text" class="form-control" readonly>
+                                        <span class="input-group-addon" >元</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">房间数</label>
+                                <div class="col-sm-9">
+                                    <select id="add-roomCnt" class="add-value" selectEnum="common_number_enum">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">客厅数</label>
+                                <div class="col-sm-9">
+                                    <select id="add-parlourCnt" class="add-value" selectEnum="common_number_enum">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">卫生间数</label>
+                                <div class="col-sm-9">
+                                    <select id="add-toiletCnt" class="add-value" selectEnum="common_number_enum">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">厨房数</label>
+                                <div class="col-sm-9">
+                                    <select id="add-kitchenCnt" class="add-value" selectEnum="common_number_enum">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">带阁楼</label>
+                                <div class="col-sm-9">
+                                    <select id="add-loft" class="add-value" selectEnum="common_boolean_enum">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">当前楼层</label>
+                                <div class="col-sm-9">
+                                    <div class="input-group add-value" >
+                                        <input id="add-thisFloor" type="text" class="form-control">
+                                        <span class="input-group-addon" >楼</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">总楼层</label>
+                                <div class="col-sm-9">
+                                    <div class="input-group add-value" >
+                                        <input id="add-totalFloor" type="text" class="form-control">
+                                        <span class="input-group-addon" >楼</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">当前楼层级别</label>
+                                <div class="col-sm-9">
+                                    <select id="add-thisFloorType" class="add-value" selectEnum="common_house_thisFloorType" readonly>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">朝向</label>
+                                <div class="col-sm-9">
+                                    <select id="add-direction" class="add-value" selectEnum="common_house_direction">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">装修等级</label>
+                                <div class="col-sm-9">
+                                    <select id="add-decoration" class="add-value" selectEnum="common_house_decoration">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">装修花销</label>
+                                <div class="col-sm-9">
+                                    <input id="add-decorationCost" class="add-value" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">住房种类</label>
+                                <div class="col-sm-9">
+                                    <select id="add-type" class="add-value" selectEnum="common_house_type">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">房屋属性</label>
+                                <div class="col-sm-9">
+                                    <select id="add-methodType" class="add-value" selectEnum="common_house_methodType">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">是否有电梯</label>
+                                <div class="col-sm-9">
+                                    <select id="add-elevator" class="add-value" selectEnum="common_boolean_enum">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">电梯配置</label>
+                                <div class="col-sm-9">
+                                    <input id="add-elevatorRate" class="add-value" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">首次挂牌时间</label>
+                                <div class="col-sm-9">
+                                    <input id="add-fristTime" class="add-value" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">上次交易时间</label>
+                                <div class="col-sm-9">
+                                    <input id="add-lastTradeTime" class="add-value" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </form>
                 </div>
             </div>
@@ -1069,11 +1278,11 @@
             "tmodifyer": "修改人",
             "tmodify": "修改时间$date",
         };
-        Table.autoInit("city-table", "/city/list", head);
+        Table.autoInit("city-table", "/house/list", head);
 
         //打开详情
         $("#btn-detail").click(function () {
-            Table.detail("my-modal", "/city/info");
+            Table.detail("my-modal", "/house/info");
         });
 
         //打开增加画面
@@ -1098,6 +1307,46 @@
                     alert("增加成功");
                 }
             });
+        });
+
+        //总价和面积修改会改变单价
+        $("#add-totalPrice").add("#add-area").keyup(function () {
+            var unitPriceObj = $("#add-unitPrice");
+            var totalPrice = $("#add-totalPrice").val();
+            var area = $("#add-area").val();
+            if (Data.isNotEmpty(totalPrice) && Data.isNotEmpty(area)) {
+                totalPrice = totalPrice * 10000;
+                var unitPrice = parseFloat(totalPrice) * 100 / parseFloat(area);
+                unitPrice = Math.round(unitPrice);
+                unitPrice = unitPrice / 100;
+                unitPriceObj.val(unitPrice);
+            } else {
+                unitPriceObj.val("");
+            }
+        });
+
+        //当前楼层和总楼层修改会改变当前楼层等级
+        $("#add-thisFloor").add("#add-totalFloor").keyup(function () {
+            var thisFloorTypeObj = $("#add-thisFloorType");
+            var thisFloor = $("#add-thisFloor").val();
+            var totalFloor = $("#add-totalFloor").val();
+            if (Data.isNotEmpty(thisFloor) && Data.isNotEmpty(totalFloor)) {
+                thisFloor = parseInt(thisFloor);
+                totalFloor = parseInt(totalFloor);
+                if (thisFloor > 0 && thisFloor <= totalFloor) {
+                    if (thisFloor < (totalFloor / 3 * 1)) {
+                        thisFloorTypeObj.val("low");
+                    } else if (thisFloor < (totalFloor / 3 * 2)) {
+                        thisFloorTypeObj.val("medium");
+                    } else {
+                        thisFloorTypeObj.val("high");
+                    }
+                } else {
+                    thisFloorTypeObj.val("");
+                }
+            } else {
+                thisFloorTypeObj.val("");
+            }
         });
 
     });

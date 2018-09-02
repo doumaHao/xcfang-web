@@ -41,3 +41,7 @@
     width: 100%;
     height: 30px;
 }
+
+.body-add .add-value .form-control{
+    height: 30px;
+}
